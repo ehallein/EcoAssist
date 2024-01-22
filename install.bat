@@ -1,5 +1,5 @@
-@REM ### Windows install commands for the EcoAssist application https://github.com/PetervanLunteren/EcoAssist
-@REM ### Peter van Lunteren, 13 Dec 2023 (latest edit)
+@REM ### Windows install commands for the EcoAssist application https://github.com/ehallein/EcoAssist
+@REM ### Evan Hallein, 22 Jan 2024 (latest edit)
 
 @REM set echo settings
 echo off
@@ -235,7 +235,7 @@ if exist "%LOCATION_ECOASSIST_FILES%\EcoAssist\" (
 ) else (
     echo Dir EcoAssist does not exists! Clone repo... | wtee -a "%LOG_FILE%"
     cd "%LOCATION_ECOASSIST_FILES%" || ( echo "Could not change directory to EcoAssist_files. Command could not be run. Installation was terminated. Copy-paste this output and send it to peter@addaxdatascience.com for further support." | wtee -a "%LOG_FILE%" & cmd /k & exit )
-    "%EA_GIT_EXE%" clone --depth 1 https://github.com/PetervanLunteren/EcoAssist.git
+    "%EA_GIT_EXE%" clone --depth 1 https://github.com/ehallein/EcoAssist.git
     @REM check the size of the folder
     dir "%LOCATION_ECOASSIST_FILES%\EcoAssist" | wtee -a "%LOG_FILE%"
 )

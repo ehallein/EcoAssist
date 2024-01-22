@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-### OSx and Linux install commands for the EcoAssist application https://github.com/PetervanLunteren/EcoAssist
-### Peter van Lunteren, 24 Nov 2023 (latest edit)
+### OSx and Linux install commands for the EcoAssist application https://github.com/ehallein/EcoAssist
+### Evan Hallein, 22 Jan 2024 (latest edit)
 
 # check the OS and set var
 if [ "$(uname)" == "Darwin" ]; then
@@ -138,7 +138,7 @@ if [ -d "$ECO" ]; then
   echo "Dir ${ECO} already exists! Skipping this step." 2>&1 | tee -a "$LOG_FILE"
 else
   echo "Dir ${ECO} does not exist! Clone repo..." 2>&1 | tee -a "$LOG_FILE"
-  git clone --progress --depth 1 https://github.com/PetervanLunteren/EcoAssist.git 2>&1 | tee -a "$LOG_FILE"
+  git clone --progress --depth 1 https://github.com/ehallein/EcoAssist.git 2>&1 | tee -a "$LOG_FILE"
   # move the open.cmd two dirs up and give it an icon
   if [ "$PLATFORM" = "Apple Silicon Mac" ] || [ "$PLATFORM" = "Intel Mac" ]; then
     FILE="$LOCATION_ECOASSIST_FILES/EcoAssist/open.command"
