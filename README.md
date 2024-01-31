@@ -1,64 +1,16 @@
 [![status](https://joss.theoj.org/papers/dabe3753aae2692d9908166a7ce80e6e/status.svg)](https://joss.theoj.org/papers/dabe3753aae2692d9908166a7ce80e6e)
 [![Project Status: Active The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![GitHub](https://img.shields.io/github/license/PetervanLunteren/EcoAssist)
-![GitHub last commit](https://img.shields.io/github/last-commit/PetervanLunteren/EcoAssist)
+![GitHub](https://img.shields.io/github/license/ehallein/EcoAssist)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7223363.svg)](https://doi.org/10.5281/zenodo.7223363)
+![GitHub last
+commit](https://img.shields.io/github/last-commit/ehallein/EcoAssist)
 
 <p align="center">
   <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/logo_large.png" width=60% height="auto" />
 </p>
 
-EcoAssist is an application designed to streamline the work of ecologists dealing with camera trap images. It’s an AI platform that allows you to analyse images with machine learning models for automatic detection, offering ecologists a way to save time and focus on conservation efforts.
+<h2 align="center">Simplifying camera trap image analysis for ecologists</h2>
 
-## See [addaxdatascience.com/ecoassist/](https://addaxdatascience.com/ecoassist/) for more info
-
-<p align="center">
-  <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_animal.jpg" width=45% height="auto" />
-  <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_red_fox.JPG" width=45% height="auto" />
-  <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_ocelot.JPG" width=45% height="auto" /> 
-  <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_tinamou.JPG" width=45% height="auto" /> 
-</p>
-
-## Cite
-Please use the following citations if you used EcoAssist in your research.
-
-<details>
-<summary>EcoAssist</summary>
-<br>
-
-[Link to paper](https://joss.theoj.org/papers/10.21105/joss.05581)
-```BibTeX
-@article{van_Lunteren_EcoAssist_2023,
-  author = {van Lunteren, Peter},
-  doi = {10.21105/joss.05581},
-  journal = {Journal of Open Source Software},
-  month = aug,
-  number = {88},
-  pages = {5581},
-  title = {{EcoAssist: A no-code platform to train and deploy custom YOLOv5 object detection models}},
-  url = {https://joss.theoj.org/papers/10.21105/joss.05581},
-  volume = {8},
-  year = {2023}
-}
-```
-</details>
-
-<details>
-<summary>MegaDetector</summary>
-<br>
-
-[Link to paper](https://arxiv.org/abs/1907.06772)
-```BibTeX
-@article{Beery_Efficient_2019,
-  title     = {Efficient Pipeline for Camera Trap Image Review},
-  author    = {Beery, Sara and Morris, Dan and Yang, Siyu},
-  journal   = {arXiv preprint arXiv:1907.06772},
-  year      = {2019}
-}
-```
-</details>
-<!---
-
-OLD README MARKDOWN:
 
 EcoAssist is an open-source application designed to streamline the work of ecologists dealing with camera trap images. It's an AI platform that enables annotation, training, and deployment of custom models for automatic species detection, offering ecologists a way to save time reviewing images and focus on conservation efforts.
 
@@ -66,11 +18,9 @@ The [MegaDetector](https://github.com/ecologize/CameraTraps/blob/main/megadetec
 
 Recently, I joined forces with [Smart Parks](https://www.smartparks.org/). We’re working on expanding the software to become a standalone and robust platform for camera trap image analysis to be used by ecologists worldwide. We'll test the setup with a pilot study for the [Desert Lion Conservation Project](https://www.desertlion.info/) in Namibia. If you feel like contributing to the development of EcoAssist, see the [sponsor section](#sponsor) below. 
 
-You can also help me by letting me know about any improvements, bugs, or new features so that I can keep EcoAssist up-to-date. You can [raise an issue](https://github.com/PetervanLunteren/EcoAssist/issues/new) or [email me](mailto:petervanlunteren@hotmail.com). An e-mail just to say hi and tell me about your project is also very much appreciated!
+You can also help me by letting me know about any improvements, bugs, or new features so that I can keep EcoAssist up-to-date. You can [raise an issue](https://github.com/ehallein/EcoAssist/issues/new) or [email me](mailto:evan.hallein@dbca.wa.gov.au). An e-mail just to say hi and tell me about your project is also very much appreciated!
 
-[<img align="left" alt="alt_text" width="25%" src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/black-fg-white-bg.jpg" /> ](https://addaxdatascience.com/)
-[<img align="left" alt="alt_text" width="18%" src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/Logo_Social_Smartparks-01.png" /> ](https://www.smartparks.org/)
-<br>
+
 <br>
 <br>
 <br>
@@ -131,7 +81,7 @@ You can also help me by letting me know about any improvements, bugs, or new fea
   <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_animal.jpg" width=45% height="auto" />
   <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_red_fox.JPG" width=45% height="auto" />
   <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_ocelot.JPG" width=45% height="auto" /> 
-  <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/teaser_tinamou.JPG" width=45% height="auto" /> 
+  <img src="https://github.com/ehallPetervanLunterenein/EcoAssist-metadata/blob/main/imgs/teaser_tinamou.JPG" width=45% height="auto" /> 
 </p>
 
 Camera trap images taken from the [Missouri camera trap database](https://lila.science/datasets/missouricameratraps) and the [WCS Camera Traps dataset](https://lila.science/datasets/wcscameratraps).
@@ -144,7 +94,7 @@ Camera trap images taken from the [Missouri camera trap database](https://lila.s
   <img src="https://github.com/PetervanLunteren/EcoAssist-metadata/blob/main/imgs/users.jpg" width=60% height="auto" />
 </p>
 
-Are you also a user and not on this map? [Let me know](mailto:petervanlunteren@hotmail.com)!
+Are you also a user and not on this map? [Let me know](mailto:evan.hallein@dbca.wa.gov.au)!
 
 ## Current focus
 Together with [Smart Parks](https://www.smartparks.org/), I'm working on expanding the software. Our current focus is:
@@ -154,15 +104,9 @@ Together with [Smart Parks](https://www.smartparks.org/), I'm working on expandi
 * Set up personalized assistance to support ecologists in effectively using EcoAssist for their projects.
 * Exploring the possibility of providing optimized hardware support.
 
-Do you think we are missing something? [Let me know](mailto:petervanlunteren@hotmail.com)!
-
-## Sponsor
-You can sponsor the development of this initiative via the sponsor button below. By contributing, you directly support the development of the platform. Your support will enable me to invest more time and expand outreach to reach more conservationists in need. Thank you!
-
-[![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/PetervanLunteren)
 
 ## Tutorial
-I've written a detailed tutorial on Medium that provides a step-by-step guide on annotating, training, evaluating, deploying, and postprocessing data with EcoAssist. You can find it [here](https://medium.com/towards-artificial-intelligence/train-and-deploy-custom-object-detection-models-without-a-single-line-of-code-a65e58b57b03). With EcoAssist I tried to make training a model as easy as possible. However, for an acruate model, some machine learning expertise will still be beneficial. If you want to outsource it, you can hire me via my company [Addax Data Science](https://addaxdatascience.com/) to train a custom model for you. 
+Peter has written a detailed tutorial on Medium that provides a step-by-step guide on annotating, training, evaluating, deploying, and postprocessing data with EcoAssist. You can find it [here](https://medium.com/towards-artificial-intelligence/train-and-deploy-custom-object-detection-models-without-a-single-line-of-code-a65e58b57b03). With EcoAssist I tried to make training a model as easy as possible. However, for an acruate model, some machine learning expertise will still be beneficial. If you want to outsource it, you can hire Peter via his company [Addax Data Science](https://addaxdatascience.com/) to train a custom model for you. 
 
 ## Requirements
 Except a minimum of 8 GB RAM, there are no hard system requirements for EcoAssist since it is largely hardware-agnostic. However, please note that machine learning can ask quite a lot from your computer in terms of processing power. Although it will run on an old laptop only designed for text editing, it’s probably not going to train any accurate models, while deploying models can take ages. Generally speaking, the faster the machine, the more reliable the results. GPU acceleration is a big plus.
@@ -179,7 +123,7 @@ Opening EcoAssist for the first time will take a bit longer than usual due to sc
 1. EcoAssist requires Git and a conda distribution to be installed on your device. See below for instructions on how to install them. During installation, you can leave all parameters at their default values.
     * You can install Git from [gitforwindows.org](https://gitforwindows.org/). 
     * EcoAssist will work with Miniforge, Mambaforge, Anaconda, or Miniconda. Miniforge is recommended, however, Mambaforge, Anaconda or Miniconda will suffice if you already have that installed. To install Miniforge, simply download and execute the [Miniforge installer](https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Windows-x86_64.exe). If you see a "Windows protected your PC" warning, you may need to click "More info" and "run anyway".
-2. Download the [EcoAssist installation file](https://PetervanLunteren.github.io/EcoAssist/install.bat) and double-click it. If that doesn't work, you can drag and drop it in a command prompt window and press enter.
+2. Download the [EcoAssist installation file](https://ehallein.github.io/EcoAssist/install.bat) and double-click it. If that doesn't work, you can drag and drop it in a command prompt window and press enter.
 3. If you've executed it with admin rights, it will be installed for all users. If you don't have admin rights, you will be prompted if you'd still like to enter an admin password, or proceed with the non-admin install - which will make EcoAssist available for your user only.
 4. When the installation is finished, there will be a shortcut file in your `Downloads` folder. You are free to move this file to a more convenient location. EcoAssist will open when double-clicked.
 
@@ -191,7 +135,7 @@ If you're having trouble with permissions issues, you can choose to run it insid
 <br>
   
 1. EcoAssist requires you to have a recent version of Xcode Developer Tools. You can donwload and install it from the [Mac App Store](https://apps.apple.com/us/app/xcode/id497799835?mt=12). 
-2. Download and open [this file](https://PetervanLunteren.github.io/EcoAssist/install.command). Some computers can be quite reluctant when having to open command files downloaded from the internet. You can circumvent trust issues by opening it with right-click > open > open. If that still doesn't work, you can change the file permissions by opening a new terminal window and copy-pasting the following commands.
+2. Download and open [this file](https://ehallein.github.io/EcoAssist/install.command). Some computers can be quite reluctant when having to open command files downloaded from the internet. You can circumvent trust issues by opening it with right-click > open > open. If that still doesn't work, you can change the file permissions by opening a new terminal window and copy-pasting the following commands.
 ```bash
 chmod 755 $HOME/Downloads/install.command
 bash $HOME/Downloads/install.command
@@ -199,14 +143,14 @@ bash $HOME/Downloads/install.command
 3. If you're an Apple Silicon user (M1/M2), go for a nice walk because this may take about 30 minutes to complete. Some of the software packages are not yet adopted to the Apple Silicon processor. There is a workaround, but it takes some time. Some packages need `Homebrew` to install. `Homebrew` will be automatically installed (if not already present), but you'll need to provide a sudo password. If you don't know the sudo password, you can skip this by pressing Ctrl+D. EcoAssist will still work fine without it, but the annotation and human-in-the-loop feature will not work.
 4. When the installation is done, you'll find a `EcoAssist.command` file in your `Applications` folder. The app will open when double-clicked. You are free to move this file to a more convenient location. If you want EcoAssist in your dock, manually change `EcoAssist.command` to `EcoAssist.app`, then drag and drop it in your dock and change it back to `EcoAssist.command`. Not the prettiest solution, but it works...
 
-If you're having trouble opening EcoAssist, you might have to reinstall `Xcode`. This sometimes happens after upgrading your MacOS version. More information in [this issue](https://github.com/PetervanLunteren/EcoAssist/issues/21). 
+If you're having trouble opening EcoAssist, you might have to reinstall `Xcode`. This sometimes happens after upgrading your MacOS version. More information in [this issue](https://github.com/ehallein/EcoAssist/issues/21). 
 </details>
 
 <details>
 <summary><b>Linux</b></summary>
 <br>
   
-1. Download [this file](https://PetervanLunteren.github.io/EcoAssist/install.command).
+1. Download [this file](https://ehallein.github.io/EcoAssist/install.command).
 2. Change the permission of the file and execute it by running the following commands in a new terminal window. If you don't have root privileges, you might be prompted for a password to install `libxcb-xinerama0`. This package is required for the labelImg software on some Linux versions. If you don't know the `sudo` password, you can skip this by pressing Ctrl+D when you are prompted for the password. EcoAssist will still work fine without it, but you might have problems with the labelImg software. The rest of the installation can be done without root privileges.
 ```bash
 chmod 755 $HOME/Downloads/install.command
@@ -250,7 +194,7 @@ EcoAssist will automatically run on NVIDIA or Apple Silicon GPU if available. Th
 </p>
 
 ## Bugs
-If you encounter any bugs, please [raise an issue](https://github.com/PetervanLunteren/EcoAssist/issues) in this repository or [send me an email](mailto:petervanlunteren@hotmail.com).
+If you encounter any bugs, please [raise an issue](https://github.com/ehallein/EcoAssist/issues) in this repository or [send me an email](mailto:evan.hallein@dbca.wa.gov.au).
 
 ## Cite
 Please use the following citations if you used EcoAssist in your research.
@@ -262,7 +206,7 @@ Please use the following citations if you used EcoAssist in your research.
 [Link to paper](https://joss.theoj.org/papers/10.21105/joss.05581)
 ```BibTeX
 @article{van_Lunteren_EcoAssist_2023,
-  author = {van Lunteren, Peter},
+  author = {van Lunteren, ehallein},
   doi = {10.21105/joss.05581},
   journal = {Journal of Open Source Software},
   month = aug,
@@ -349,10 +293,10 @@ All files are located in one folder, called `EcoAssist_files`. You can uninstall
 </details>
 
 ## Contributors
-This is an open-source project, so please feel free to fork this repo and submit fixes, improvements or add new features. For more information, see the [contribution guidelines](https://github.com/PetervanLunteren/EcoAssist/blob/main/CONTRIBUTING.md). 
+This is an open-source project, so please feel free to fork this repo and submit fixes, improvements or add new features. For more information, see the [contribution guidelines](https://github.com/ehallein/EcoAssist/blob/main/CONTRIBUTING.md). 
 
-<a href="https://github.com/petervanlunteren/EcoAssist/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=petervanlunteren/EcoAssist" />
+<a href="https://github.com/ehallein/EcoAssist/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=ehallein/EcoAssist" />
 </a>
 
 ###
@@ -363,5 +307,3 @@ As far as I know, there are three other software packages capable of deploying t
 * [CamTrap Detector](https://github.com/bencevans/camtrap-detector)
 * [MegaDetector GUI](https://github.com/petargyurov/megadetector-gui)
 * [Megadetector-Interface](https://github.com/NaomiMcWilliam/Megadetector-Interface)
-
---->
