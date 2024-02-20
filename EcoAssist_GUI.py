@@ -47,7 +47,7 @@ from PIL import ImageTk, Image, ImageFilter, ImageFile
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # set global variables
-version = "4.4"
+version = "4.4b"
 EcoAssist_files = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -91,7 +91,7 @@ of_txt = ["of", "de"]
 
 
 # post-process files
-def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, data_type):
+def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure,  empty_in_root, data_type):
     # log
     print(f"EXECUTED: {sys._getframe().f_code.co_name}({locals()})\n")
 
@@ -327,15 +327,15 @@ def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, cr
         # separate files
         if sep:
             if n_detections == 0:
-                file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked)
+                file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
             else:
                 if len(unique_labels) > 1:
                     labels_str = "_".join(unique_labels)
-                    file = move_files(file, labels_str, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked)
+                    file = move_files(file, labels_str, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
                 elif len(unique_labels) == 0:
-                    file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked)
+                    file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
                 else:
-                    file = move_files(file, label, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked)
+                    file = move_files(file, label, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
         
         # collect info to append to csv files
         if exp:
@@ -450,6 +450,8 @@ def start_postprocess():
     thresh = var_thresh.get()
     sep = var_separate_files.get()
     file_placement = var_file_placement.get()
+    keep_structure = var_keep_structure.get()
+    empty_in_root = var_empty_in_root.get()
     sep_conf = var_sep_conf.get()
     vis = var_vis_files.get()
     crp = var_crp_files.get()
@@ -535,11 +537,11 @@ def start_postprocess():
     try:
         # postprocess images
         if img_json:
-            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, data_type = "img")
+            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure, empty_in_root, data_type = "img")
 
         # postprocess videos
         if vid_json:
-            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, data_type = "vid")
+            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure, empty_in_root, data_type = "vid")
         
         # complete
         complete_frame(fth_step)
@@ -2951,7 +2953,7 @@ conf_dirs = {0.0 : "conf_0.0",
              1.0 : "conf_0.9-1.0"}
 
 # move files into subdirectories
-def move_files(file, detection_type, var_file_placement, max_detection_conf, var_sep_conf, dst_root, src_dir, manually_checked):
+def move_files(file, detection_type, var_file_placement, max_detection_conf, var_sep_conf, dst_root, src_dir, manually_checked, var_keep_structure, var_empty_in_root):
     # log
     print(f"EXECUTED: {sys._getframe().f_code.co_name}({locals()})\n")
 
@@ -2965,7 +2967,18 @@ def move_files(file, detection_type, var_file_placement, max_detection_conf, var
             confidence_dir = conf_dirs[ceiled_confidence]
         new_file = os.path.join(detection_type, confidence_dir, file)
     else:
-        new_file = os.path.join(detection_type, file)
+        if var_keep_structure:
+            if var_empty_in_root:
+                if detection_type == "empty":
+                    new_file = os.path.join(detection_type,file)
+                else:
+                    new_file = os.path.join(os.path.dirname(file),detection_type)
+                    new_file = os.path.join(new_file,os.path.basename(file))
+            else:
+                new_file = os.path.join(os.path.dirname(file),detection_type)
+                new_file = os.path.join(new_file,os.path.basename(file))
+        else:
+            new_file = os.path.join(detection_type,file)
     
     # set paths
     src = os.path.join(src_dir, file)
@@ -4556,9 +4569,29 @@ rad_file_placement_move.grid(row=row_file_placement, column=1, sticky='w', padx=
 rad_file_placement_copy = Radiobutton(sep_frame, text=["Move", "Mover"][lang], variable=var_file_placement, value=1)
 rad_file_placement_copy.grid(row=row_file_placement, column=1, sticky='e', padx=5)
 
+# keep structure
+lbl_keep_structure_txt = ["Keep directory structure", "Keep directory structure"]
+row_keep_structure = 1
+lbl_keep_structure = Label(sep_frame, text=lbl_keep_structure_txt[lang], width=1, anchor="w")
+lbl_keep_structure.grid(row=row_keep_structure, sticky='nesw', pady=2)
+var_keep_structure = BooleanVar()
+var_keep_structure.set(True)
+chb_keep_structure = Checkbutton(sep_frame, variable=var_keep_structure, anchor="w")
+chb_keep_structure.grid(row=row_keep_structure, column=1, sticky='nesw', padx=5)
+
+# put empty in root folder
+lbl_empty_in_root_txt = ["Put empty in root folder", "Put empty in root folder"]
+row_empty_in_root = 2
+lbl_empty_in_root = Label(sep_frame, text=lbl_empty_in_root_txt[lang], width=1, anchor="w")
+lbl_empty_in_root.grid(row=row_empty_in_root, sticky='nesw', pady=2)
+var_empty_in_root = BooleanVar()
+var_empty_in_root.set(False)
+chb_empty_in_root = Checkbutton(sep_frame, variable=var_empty_in_root, anchor="w")
+chb_empty_in_root.grid(row=row_empty_in_root, column=1, sticky='nesw', padx=5)
+
 # separate per confidence
 lbl_sep_conf_txt = ["Sort results based on confidence", "Clasificar resultados basados en confianza"]
-row_sep_conf = 1
+row_sep_conf = 3
 lbl_sep_conf = Label(sep_frame, text="     " + lbl_sep_conf_txt[lang], width=1, anchor="w")
 lbl_sep_conf.grid(row=row_sep_conf, sticky='nesw', pady=2)
 var_sep_conf = BooleanVar()
