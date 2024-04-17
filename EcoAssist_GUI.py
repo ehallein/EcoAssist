@@ -47,7 +47,7 @@ from PIL import ImageTk, Image, ImageFilter, ImageFile
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 # set global variables
-version = "4.4c"
+version = "4.4d"
 EcoAssist_files = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
@@ -1677,8 +1677,15 @@ def classify_detections(json_fpath, data_type):
     # cancel button
     btn_cancel_cls = Button(progress_frame, text=cancel_txt[lang], command=lambda: cancel_subprocess(p))
     btn_cancel_cls.grid(row=8, column=0, columnspan=2)
+    elapsed_time = "00:00:00"
+    time_left = "00:00:00"
+    current_im = "0"
+    total_im = "0"
+    processing_speed = "0"
+    percentage = "0"
+    GPU_param = "Unknown"
 
-    # calculate metrics while running
+# calculate metrics while running
     for line in p.stdout:
         print(line, end='')
 
@@ -1992,6 +1999,7 @@ def deploy_model(path_to_image_folder, selected_options, data_type):
             var_cls_further.get() and var_cls_vehicle_model.get() not in none_txt or \
             var_cls_further.get() and var_cls_person_model.get() not in none_txt:
             if data_type == "img":
+                print("classifing detections for animals...")
                 classify_detections(os.path.join(chosen_folder, "image_recognition_file.json"), data_type)
             else:
                 classify_detections(os.path.join(chosen_folder, "video_recognition_file.json"), data_type)
