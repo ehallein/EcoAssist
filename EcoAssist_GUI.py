@@ -91,7 +91,7 @@ of_txt = ["of", "de"]
 
 
 # post-process files
-def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure,  empty_in_root, data_type):
+def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure,  empty_in_root, skip_empty, data_type):
     # log
     print(f"EXECUTED: {sys._getframe().f_code.co_name}({locals()})\n")
 
@@ -327,13 +327,17 @@ def postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, cr
         # separate files
         if sep:
             if n_detections == 0:
-                file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
+                #skip empty images if option selected
+                if skip_empty == False:
+                    file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
             else:
                 if len(unique_labels) > 1:
                     labels_str = "_".join(unique_labels)
                     file = move_files(file, labels_str, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
                 elif len(unique_labels) == 0:
-                    file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
+                    #skip empty images if option selected
+                    if skip_empty == False:
+                        file = move_files(file, "empty", file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
                 else:
                     file = move_files(file, label, file_placement, max_detection_conf, sep_conf, dst_dir, src_dir, manually_checked,keep_structure, empty_in_root)
         
@@ -452,6 +456,7 @@ def start_postprocess():
     file_placement = var_file_placement.get()
     keep_structure = var_keep_structure.get()
     empty_in_root = var_empty_in_root.get()
+    skip_empty = var_skip_empty.get()
     sep_conf = var_sep_conf.get()
     vis = var_vis_files.get()
     crp = var_crp_files.get()
@@ -537,11 +542,11 @@ def start_postprocess():
     try:
         # postprocess images
         if img_json:
-            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure, empty_in_root, data_type = "img")
+            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure, empty_in_root, skip_empty,data_type = "img")
 
         # postprocess videos
         if vid_json:
-            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure, empty_in_root, data_type = "vid")
+            postprocess(src_dir, dst_dir, thresh, sep, file_placement, sep_conf, vis, crp, exp, keep_structure, empty_in_root, skip_empty, data_type = "vid")
         
         # complete
         complete_frame(fth_step)
@@ -5209,13 +5214,23 @@ row_keep_structure = 1
 lbl_keep_structure = Label(sep_frame, text=lbl_keep_structure_txt[lang], width=1, anchor="w")
 lbl_keep_structure.grid(row=row_keep_structure, sticky='nesw', pady=2)
 var_keep_structure = BooleanVar()
-var_keep_structure.set(True)
+var_keep_structure.set(False)
 chb_keep_structure = Checkbutton(sep_frame, variable=var_keep_structure, anchor="w")
 chb_keep_structure.grid(row=row_keep_structure, column=1, sticky='nesw', padx=5)
 
+# skip empty
+lbl_skip_empty_txt = ["Skip empty images", "Skip empty images"]
+row_skip_empty = 2
+lbl_skip_empty = Label(sep_frame, text=lbl_skip_empty_txt[lang], width=1, anchor="w")
+lbl_skip_empty.grid(row=row_skip_empty, sticky='nesw', pady=2)
+var_skip_empty = BooleanVar()
+var_skip_empty.set(False)
+chb_skip_empty = Checkbutton(sep_frame, variable=var_skip_empty, anchor="w")
+chb_skip_empty.grid(row=row_skip_empty, column=1, sticky='nesw', padx=5)
+
 # put empty in root folder
 lbl_empty_in_root_txt = ["Put empty in root folder", "Put empty in root folder"]
-row_empty_in_root = 2
+row_empty_in_root = 3
 lbl_empty_in_root = Label(sep_frame, text=lbl_empty_in_root_txt[lang], width=1, anchor="w")
 lbl_empty_in_root.grid(row=row_empty_in_root, sticky='nesw', pady=2)
 var_empty_in_root = BooleanVar()
@@ -5225,7 +5240,7 @@ chb_empty_in_root.grid(row=row_empty_in_root, column=1, sticky='nesw', padx=5)
 
 # separate per confidence
 lbl_sep_conf_txt = ["Sort results based on confidence", "Clasificar resultados basados en confianza"]
-row_sep_conf = 3
+row_sep_conf = 4
 lbl_sep_conf = Label(sep_frame, text="     " + lbl_sep_conf_txt[lang], width=1, anchor="w")
 lbl_sep_conf.grid(row=row_sep_conf, sticky='nesw', pady=2)
 var_sep_conf = BooleanVar()
@@ -5235,7 +5250,7 @@ chb_sep_conf.grid(row=row_sep_conf, column=1, sticky='nesw', padx=5)
 
 ## visualize images
 lbl_vis_files_txt = ["Draw bounding boxes and confidences", "Dibujar contornos y confianzas"]
-row_vis_files = 3
+row_vis_files = 5
 lbl_vis_files = Label(fth_step, text=lbl_vis_files_txt[lang], width=1, anchor="w")
 lbl_vis_files.grid(row=row_vis_files, sticky='nesw', pady=2)
 var_vis_files = BooleanVar()
@@ -5245,7 +5260,7 @@ chb_vis_files.grid(row=row_vis_files, column=1, sticky='nesw', padx=5)
 
 ## crop images
 lbl_crp_files_txt = ["Crop detections", "Recortar detecciones"]
-row_crp_files = 4
+row_crp_files = 6
 lbl_crp_files = Label(fth_step, text=lbl_crp_files_txt[lang], width=1, anchor="w")
 lbl_crp_files.grid(row=row_crp_files, sticky='nesw', pady=2)
 var_crp_files = BooleanVar()
@@ -5255,7 +5270,7 @@ chb_crp_files.grid(row=row_crp_files, column=1, sticky='nesw', padx=5)
 
 # export results
 lbl_exp_txt = ["Export results and retrieve metadata", "Exportar resultados y recuperar metadatos"]
-row_exp = 5
+row_exp = 7
 lbl_exp = Label(fth_step, text=lbl_exp_txt[lang], width=1, anchor="w")
 lbl_exp.grid(row=row_exp, sticky='nesw', pady=2)
 var_exp = BooleanVar()
@@ -5265,7 +5280,7 @@ chb_exp.grid(row=row_exp, column=1, sticky='nesw', padx=5)
 
 ## exportation options
 exp_frame_txt = ["Export options", "Opciones de exportación"]
-exp_frame_row = 6
+exp_frame_row = 8
 exp_frame = LabelFrame(fth_step, text=" ↳ " + exp_frame_txt[lang] + " ", pady=2, padx=5, relief='solid', highlightthickness=5, font=100, borderwidth=1, fg="grey80")
 exp_frame.configure(font=(text_font, second_level_frame_font_size, "bold"))
 exp_frame.grid(row=exp_frame_row, column=0, columnspan=2, sticky = 'ew')
