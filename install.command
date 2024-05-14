@@ -353,8 +353,8 @@ conda env remove -p $ECOASSISTCONDAENV_CLA
 conda create -p $ECOASSISTCONDAENV_CLA python=3.8 -y
 conda activate $ECOASSISTCONDAENV_CLA
 $PIP_CLA install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
-$PIP_CLA install "ultralytics==8.0.191"
-$PIP_CLA install "numpy==1.24.1"
+$PIP_CLA install "ultralytics==8.2.15"
+# $PIP_CLA install "numpy==1.24.1"
 $PIP_CLA install "humanfriendly==10.0"
 $PIP_CLA install "jsonpickle==3.0.2"
 conda info --envs >> "$LOG_FILE"

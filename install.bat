@@ -382,8 +382,8 @@ call %EA_CONDA_EXE% env remove -n ecoassistcondaenv-yolov8
 call %EA_CONDA_EXE% env create --file EcoAssist\envs\classifier-yolov8-windows.yml
 call %EA_CONDA_EXE% activate ecoassistcondaenv-yolov8
 "%EA_PIP_EXE_CLA%" install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-"%EA_PIP_EXE_CLA%" install ultralytics==8.0.191
-"%EA_PIP_EXE_CLA%" install numpy==1.24.1
+"%EA_PIP_EXE_CLA%" install ultralytics==8.2.15
+@REM "%EA_PIP_EXE_CLA%" install numpy==1.24.1
 "%EA_PIP_EXE_CLA%" install humanfriendly==10.0
 "%EA_PIP_EXE_CLA%" install jsonpickle==3.0.2
 
