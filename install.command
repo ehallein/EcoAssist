@@ -37,7 +37,7 @@ fi
 # set variables
 CONDA_DIR="${LOCATION_ECOASSIST_FILES}/miniforge"
 ECOASSISTCONDAENV_DET="${CONDA_DIR}/envs/ecoassistcondaenv"
-ECOASSISTCONDAENV_CLA="${CONDA_DIR}/envs/ecoassistcondaenv-yolov8"
+ECOASSISTCONDAENV_CLA="${CONDA_DIR}/envs/ecoassistcondaenv-yolov11"
 PIP_DET="${ECOASSISTCONDAENV_DET}/bin/pip"
 PIP_CLA="${ECOASSISTCONDAENV_CLA}/bin/pip"
 HOMEBREW_DIR="/opt/homebrew"
@@ -350,10 +350,10 @@ conda deactivate
 
 # create dedicated yolov8 classification environment
 conda env remove -p $ECOASSISTCONDAENV_CLA
-conda create -p $ECOASSISTCONDAENV_CLA python=3.8 -y
+conda create -p $ECOASSISTCONDAENV_CLA python=3.10 -y
 conda activate $ECOASSISTCONDAENV_CLA
 $PIP_CLA install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2
-$PIP_CLA install "ultralytics==8.2.15"
+$PIP_CLA install "ultralytics==8.3.15"
 # $PIP_CLA install "numpy==1.24.1"
 $PIP_CLA install "humanfriendly==10.0"
 $PIP_CLA install "jsonpickle==3.0.2"

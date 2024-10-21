@@ -23,7 +23,7 @@ cd "%LOCATION_ECOASSIST_FILES%" || ( cmd /k & exit )
 
 @REM activate dedicated environment
 call %EA_CONDA_EXE% deactivate
-call %EA_CONDA_EXE% activate ecoassistcondaenv-yolov8
+call %EA_CONDA_EXE% activate ecoassistcondaenv-yolov11
 
 @REM add gits to PYTHONPATH
 set "PYTHONPATH=%LOCATION_ECOASSIST_FILES%\cameratraps\classification"
